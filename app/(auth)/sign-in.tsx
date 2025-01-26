@@ -20,7 +20,7 @@ import {
 } from "@/components/ui/toast"
 
 import { ChevronLeft, AlertCircle, Eye, EyeOff } from "lucide-react-native"
-import { useRouter } from "expo-router"
+import { Link, useRouter } from "expo-router"
 import { VStack } from "@/components/ui/vstack"
 import { Button, ButtonText } from "@/components/ui/button"
 import { Icon } from "@/components/ui/icon"
@@ -28,6 +28,8 @@ import { Input, InputField, InputIcon } from "@/components/ui/input"
 import { Heading } from "@/components/ui/heading"
 import { SafeAreaView } from "react-native-safe-area-context"
 import { Box } from "@/components/ui/box";
+import { Center } from "@/components/ui/center";
+import { HStack } from "@/components/ui/hstack";
 
 export default function LoginForm() {
   const router = useRouter()
@@ -119,11 +121,11 @@ export default function LoginForm() {
               <Icon className='text-white w-14 h-14' as={ChevronLeft }/>
            </Button>
 
-        <VStack className="mt-12" >
+        <VStack className="mt-8" >
           <FormControl>
             
             <VStack space="md" className="">
-              <Heading className="text-white" size="4xl">Hey 👋,</Heading>
+              <Heading className="text-white " size="4xl">Hey 👋,</Heading>
               <Heading className="text-white" size="4xl">Welcome back</Heading>
             </VStack>
 
@@ -179,9 +181,15 @@ export default function LoginForm() {
 
           
 
-          <TouchableOpacity className="bg-[#a3e635] w-full p-4 rounded-full mt-14" onPress={() => handleSubmit() }>
-              <Text className="text-center text-2xl font-semibold">Login</Text>
+          <TouchableOpacity className="bg-[#a3e635] w-full p-3 rounded-full mt-14" onPress={() => handleSubmit() }>
+              <Text className="text-center text-2xl font-semibold text-black">Login</Text>
           </TouchableOpacity>
+
+          <HStack className="justify-center items-center mt-8" space="md">
+            <Text className="text-white ">Don't have an account?</Text>
+            <Link  href='/(auth)/sign-up' className="text-[#a3e635]">Sign up</Link>
+          </HStack>
+
         </VStack>
       </VStack>
     </SafeAreaView>
