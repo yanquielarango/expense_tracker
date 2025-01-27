@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, {useCallback, useState} from "react"
 import { TouchableOpacity } from "react-native"
 
 import {
@@ -30,85 +30,61 @@ import { SafeAreaView } from "react-native-safe-area-context"
 import { Box } from "@/components/ui/box";
 import { Center } from "@/components/ui/center";
 import { HStack } from "@/components/ui/hstack";
+import {useSignIn } from "@clerk/clerk-expo";
 
 export default function LoginForm() {
+  const { signIn, setActive, isLoaded } = useSignIn()
   const router = useRouter()
-  const [formData, setFormData] = useState({
+  const [form, setForm] = useState({
     email: "",
     password: "",
   })
 
-  const [errors, setErrors] = useState({
-    email: "",
-    password: "",
-  })
+
+  const [errors, setErrors] = useState<{ [key: string]: string }>({})
+
 
   const [showPassword, setShowPassword] = useState(false)
 
-  const toast = useToast()
-  const [toastId, setToastId] = React.useState(0)
 
 
 
-  const validateForm = () => {
-    let isValid = true
-    const newErrors = { email: "", password: "" }
+  const onSignInPress = useCallback(async () => {
+    if (!isLoaded) return
 
-    if (!formData.email) {
-      newErrors.email = "Email is required"
-      isValid = false
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Email is invalid"
-      isValid = false
+    // Start the sign-in process using the email and password provided
+    try {
+      const signInAttempt = await signIn.create({
+        identifier: form.email,
+        password: form.password,
+      })
+
+      // If sign-in process is complete, set the created session as active
+      // and redirect the user
+      if (signInAttempt.status === 'complete') {
+        await setActive({ session: signInAttempt.createdSessionId })
+        router.replace('/')
+      } else {
+        // If the status isn't complete, check why. User might need to
+        // complete further steps.
+        console.error(JSON.stringify(signInAttempt, null, 2))
+      }
+    } catch (err) {
+      // See https://clerk.com/docs/custom-flows/error-handling
+      // for more info on error handling
+
+      if (err.errors && err.errors.length > 0) {
+        const newErrors: { [key: string]: string } = {}
+        err.errors.forEach((error: any) => {
+          if (error.meta && error.meta.paramName) {
+            newErrors[error.meta.paramName] = error.longMessage || error.message
+          }
+        })
+        setErrors(newErrors)
+      }
+      console.error(JSON.stringify(err, null, 2))
     }
-
-    if (!formData.password) {
-      newErrors.password = "Password is required"
-      isValid = false
-    } else if (formData.password.length < 6) {
-      newErrors.password = "Password must be at least 6 characters"
-      isValid = false
-    }
-
-    setErrors(newErrors)
-    return isValid
-  }
-
-  const handleSubmit = () => {
-    if (validateForm()) {
-      console.log("Form submitted:", formData)
-      // Add your submission logic here
-      showNewToast({ email: formData.email, password: formData.password })
-      
-    }
-  }
-
-  const handleInputChange = (name: string, value: string) => {
-    setFormData((prev) => ({ ...prev, [name]: value }))
-    validateForm()
-  }
-
-
-  const showNewToast = ({ email, password }: { email: string; password: string }) => {
-    const newId = Math.random()
-    setToastId(newId)
-    toast.show({
-      id: newId.toString(),
-      placement: "top right",
-      duration: 3000,
-      render: ({ id }) => {
-        const uniqueToastId = "toast-" + id
-        return (
-          <Toast nativeID={uniqueToastId} action="success" variant="solid" className=" mt-16">
-            <ToastTitle>{email}</ToastTitle>
-            <ToastDescription>
-              {password}
-            </ToastDescription>
-          </Toast>
-        )
-      },
-    })
-  }
+  }, [isLoaded, form.email, form.password])
 
 
 
@@ -133,28 +109,32 @@ export default function LoginForm() {
               <Text size="xl" className="text-white mb-6">Login now to tack all your expenses</Text>
             </VStack>
 
-            <FormControl isInvalid={!!errors.email}>
+            <FormControl isInvalid={!!errors.email_address}>
               <FormControlLabel >
                 <FormControlLabelText  className="text-2xl mb-4 mt-6">Email</FormControlLabelText>
               </FormControlLabel>
-              <Input variant="rounded" size="xl"  className="">
+              <Input variant="rounded" size="xl"  className="" >
                 <InputField
                   placeholder="Enter your email"
-                  value={formData.email}
-                  onChangeText={(text) => handleInputChange("email", text)}
+                  value={form.email}
+                  onChangeText={(value) => setForm({...form, email: value})}
                   keyboardType="email-address"
                   autoCapitalize="none"
                 />
               </Input>
-              {errors.email && (
-                <FormControlError>
-                  <FormControlErrorIcon as={AlertCircle} />
-                  <FormControlErrorText>{errors.email}</FormControlErrorText>
-                </FormControlError>
+
+              {errors.email_address && (
+                  <FormControlError>
+                    <FormControlErrorIcon as={AlertCircle} />
+                    <FormControlErrorText>
+                      {errors.email_address}
+                    </FormControlErrorText>
+                  </FormControlError>
               )}
+
             </FormControl>
 
-            <FormControl isInvalid={!!errors.password}>
+            <FormControl  isInvalid={!!errors.password}>
               <FormControlLabel >
                 <FormControlLabelText  className="text-2xl mb-4 mt-6">Password</FormControlLabelText>
               </FormControlLabel>
@@ -162,26 +142,28 @@ export default function LoginForm() {
                 <InputField
                   type={showPassword ? "text" : "password"}
                   placeholder="Enter your password"
-                  value={formData.password}
-                  onChangeText={(text) => handleInputChange("password", text)}
+                  value={form.password}
+                  onChangeText={(value) => setForm({...form, password: value})}
                   secureTextEntry={!showPassword}
                 />
                 <TouchableOpacity onPress={() => setShowPassword(!showPassword)} className='pr-4'>
                   <InputIcon as={showPassword ? Eye : EyeOff} />
                 </TouchableOpacity>
               </Input>
+
               {errors.password && (
-                <FormControlError>
-                  <FormControlErrorIcon as={AlertCircle} />
-                  <FormControlErrorText>{errors.password}</FormControlErrorText>
-                </FormControlError>
+                  <FormControlError>
+                    <FormControlErrorIcon as={AlertCircle} />
+                    <FormControlErrorText>{errors.password}</FormControlErrorText>
+                  </FormControlError>
               )}
+
             </FormControl>
           </FormControl>
 
           
 
-          <TouchableOpacity className="bg-[#a3e635] w-full p-3 rounded-full mt-14" onPress={() => handleSubmit() }>
+          <TouchableOpacity className="bg-[#a3e635] w-full p-3 rounded-full mt-14" onPress={ onSignInPress }>
               <Text className="text-center text-2xl font-semibold text-black">Login</Text>
           </TouchableOpacity>
 

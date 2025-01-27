@@ -36,7 +36,7 @@ export default function Welcome() {
       </VStack>
 
       <Box className="mt-10 items-center ">
-        <TouchableOpacity className="bg-[#a3e635] w-full p-4 rounded-full" onPress={() => router.navigate('/(tabs)/home')}>
+        <TouchableOpacity className="bg-[#a3e635] w-full p-4 rounded-full" onPress={() => router.replace('/(auth)/sign-up')}>
           <Text className="text-center text-2xl font-bold text-black">Get Started</Text>
         </TouchableOpacity>
       </Box>

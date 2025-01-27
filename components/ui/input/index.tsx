@@ -206,7 +206,7 @@ const InputField = React.forwardRef<
   );
 });
 
-Input.displayName = 'Input';
+Input.displayName = 'CustomInput';
 InputIcon.displayName = 'InputIcon';
 InputSlot.displayName = 'InputSlot';
 InputField.displayName = 'InputField';

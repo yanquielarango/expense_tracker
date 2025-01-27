@@ -48,6 +48,7 @@ export default function RootLayout() {
         <ClerkLoaded>
           <ConvexProviderWithClerk client={convex} useAuth={useAuth}>
             <Stack screenOptions={{contentStyle: { backgroundColor: '#171717'}}}>
+              <Stack.Screen name='index' options={{headerShown: false}}/>
               <Stack.Screen name='(auth)' options={{headerShown: false}}/>
               <Stack.Screen name='(tabs)' options={{headerShown: false}}/>
             </Stack>
