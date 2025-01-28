@@ -15,8 +15,7 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      },
-      "package": "com.yanquiel.expense_tracker"
+      }
     },
     "web": {
       "bundler": "metro",
@@ -42,7 +41,7 @@
         "origin": false
       },
       "eas": {
-        "projectId": "fadeb746-1c6b-4e18-aa8a-3c32e63eaa9b"
+        "projectId": "27a3762a-fad9-4e2d-92ac-41c75af9f307"
       }
     }
   }

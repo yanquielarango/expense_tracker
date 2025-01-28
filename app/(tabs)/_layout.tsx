@@ -20,7 +20,7 @@ export default function TabsLayout() {
                 options={{
                     tabBarIcon: ({ color }) => <Home size={24} color={color} />,
                     tabBarLabel: "Home",
-                    animation: "fade"
+                    // animation: "fade"
                 }}
             />
             <Tabs.Screen
@@ -28,7 +28,7 @@ export default function TabsLayout() {
                 options={{
                     tabBarIcon: ({ color }) => <WalletCards size={24} color={color} />,
                     tabBarLabel: "Expenses",
-                    animation: 'fade'
+                    // animation: 'fade'
                 }}
             />
             <Tabs.Screen
@@ -36,7 +36,7 @@ export default function TabsLayout() {
                 options={{
                     tabBarIcon: ({ color }) => <Clock size={24} color={color} />,
                     tabBarLabel: "History",
-                    animation: 'fade'
+                    // animation: 'fade'
                 }}
             />
             <Tabs.Screen
@@ -44,7 +44,7 @@ export default function TabsLayout() {
                 options={{
                     tabBarIcon: ({ color }) => <User size={24} color={color} />,
                     tabBarLabel: "Profile",
-                    animation: 'fade'
+                    // animation: 'fade'
                 }}
             />
         </Tabs>

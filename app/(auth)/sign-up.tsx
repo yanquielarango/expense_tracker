@@ -52,43 +52,87 @@ export default function Signup() {
       Alert.alert("Error", err.errors[0].longMessage);
     }
   };
+  // const onPressVerify = async () => {
+  //   if (!isLoaded) return;
+  //   try {
+  //     const completeSignUp = await signUp.attemptEmailAddressVerification({
+  //       code: verification.code,
+  //     });
+  //     if (completeSignUp.status === "complete") {
+  //       // await fetchAPI("/(api)/user", {
+  //       //   method: "POST",
+  //       //   body: JSON.stringify({
+  //       //     name: form.name,
+  //       //     email: form.email,
+  //       //     clerkId: completeSignUp.createdUserId,
+  //       //   }),
+  //       // });
+  //       await setActive({ session: completeSignUp.createdSessionId });
+  //       setVerification({
+  //         ...verification,
+  //         state: "success",
+  //         error: "",
+  //       });
+  //     } else {
+  //       setVerification({
+  //         ...verification,
+  //         error: "Verification failed. Please try again.",
+  //         state: "failed",
+  //       });
+  //     }
+  //   } catch (err: any) {
+  //     // See https://clerk.com/docs/custom-flows/error-handling
+  //     // for more info on error handling
+  //     setVerification({
+  //       ...verification,
+  //       error: err.errors?.[0]?.longMessage || "Verification failed. Please try again.",
+  //       state: "failed",
+  //     });
+  //   }
+  // };
+
   const onPressVerify = async () => {
-    if (!isLoaded) return;
+    if (!isLoaded) return
     try {
+      console.log("Attempting verification with code:", verification.code)
       const completeSignUp = await signUp.attemptEmailAddressVerification({
         code: verification.code,
-      });
-      if (completeSignUp.status === "complete") {
-        // await fetchAPI("/(api)/user", {
-        //   method: "POST",
-        //   body: JSON.stringify({
-        //     name: form.name,
-        //     email: form.email,
-        //     clerkId: completeSignUp.createdUserId,
-        //   }),
-        // });
-        await setActive({ session: completeSignUp.createdSessionId });
-        setVerification({
-          ...verification,
-          state: "success",
-        });
-      } else {
-        setVerification({
-          ...verification,
-          error: "Verification failed. Please try again.",
-          state: "failed",
-        });
+      })
+      console.log("Verification result:", JSON.stringify(completeSignUp, null, 2))
+
+      if (completeSignUp.status !== "complete") {
+        console.log("Verification not complete")
+        throw new Error("Verification failed")
       }
-    } catch (err: any) {
-      // See https://clerk.com/docs/custom-flows/error-handling
-      // for more info on error handling
+
+      await setActive({ session: completeSignUp.createdSessionId })
+      console.log("Session set active")
       setVerification({
         ...verification,
-        error: err.errors[0].longMessage,
+        state: "success",
+        error: "",
+      })
+      setShowSuccessModal(true)
+    } catch (err: any) {
+      console.log("Verification error:", JSON.stringify(err, null, 2))
+      setVerification({
+        ...verification,
+        error: err.errors?.[0].longMessage || "Verification failed. Please try again.",
         state: "failed",
-      });
+      })
     }
-  };
+  }
+
+  const resendVerificationCode = async () => {
+    if (!isLoaded) return
+    try {
+      await signUp!.prepareEmailAddressVerification({ strategy: "email_code" })
+      Alert.alert("Success", "Verification code resent. Please check your email.")
+    } catch (err: any) {
+      console.log(JSON.stringify(err, null, 2))
+      Alert.alert("Error", err.errors[0].longMessage)
+    }
+  }
 
   return (
 
@@ -164,13 +208,10 @@ export default function Signup() {
 
 
         <ReactNativeModal
-            isVisible={verification.state === "pending"}
-            // onBackdropPress={() =>
-            //   setVerification({ ...verification, state: "default" })
-            // }
+            isVisible={verification.state === "pending" || verification.state === "failed"}
             onModalHide={() => {
               if (verification.state === "success") {
-                setShowSuccessModal(true);
+                setShowSuccessModal(true)
               }
             }}
              >
@@ -183,24 +224,26 @@ export default function Signup() {
             </Text>
 
             <OtpInput
-                type='numeric'
                 onTextChange={(code) => setVerification({ ...verification, code })}
                 secureTextEntry={false}
                 numberOfDigits={6}
                 autoFocus={true}
                 focusStickBlinkingDuration={500}
-                onFilled={onPressVerify}
-
             />
 
-            {verification.error && (
-                <Text className="text-red-500 text-lg mt-2">
-                  {verification.error}
-                </Text>
-            )}
-            <TouchableOpacity className="bg-[#16a34a] w-full p-3 rounded-full mt-8" onPress={onPressVerify }>
+            {verification.error && <Text className="text-red-500 text-lg mt-2 font-Jakarta ">{verification.error}</Text>}
+            <TouchableOpacity className="bg-[#16a34a] w-full p-3 rounded-full mt-8" onPress={onPressVerify}>
               <Text className="text-center text-xl text-white font-bold">Verify Email</Text>
             </TouchableOpacity>
+
+           <HStack  space="sm" className="mt-4">
+             <Text className="text-general-200 font-Jakarta">
+               Didn't receive the code?
+             </Text>
+             <TouchableOpacity  onPress={resendVerificationCode}>
+               <Text className="text-[#1063FD] font-JakartaBold">Resend</Text>
+             </TouchableOpacity>
+           </HStack>
 
           </VStack>
         </ReactNativeModal>
