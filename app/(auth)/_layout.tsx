@@ -1,14 +1,35 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import { Stack } from 'expo-router'
+import { Stack } from "expo-router"
 
-const Layout = () => {
-  return (
-    <Stack>
-        <Stack.Screen  name='(tabs)' options={{headerShown: false}} />
-
-    </Stack>
-  )
+export default function AuthLayout() {
+    return (
+        <Stack
+            screenOptions={{
+                headerShown: false,
+                contentStyle: { backgroundColor: "#171717" },
+                animation: "slide_from_right",
+            }}
+        >
+            <Stack.Screen
+                name="welcome"
+                options={{
+                    headerShown: false,
+                }}
+            />
+            <Stack.Screen
+                name="sign-in"
+                options={{
+                    presentation: "modal",
+                    animation: "slide_from_right",
+                }}
+            />
+            <Stack.Screen
+                name="sign-up"
+                options={{
+                    presentation: "modal",
+                    animation: "slide_from_right",
+                }}
+            />
+        </Stack>
+    )
 }
 
-export default Layout

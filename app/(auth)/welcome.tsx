@@ -12,12 +12,12 @@ const Welcome = () =>  {
   return (
     <SafeAreaView className="bg-white flex-1   ">
       <VStack >
-        <TouchableOpacity className='items-end p-5' onPress={() => router.replace('/(public)/sign-in')}>
+        <TouchableOpacity className='items-end p-5' onPress={() => router.replace('/(auth)/sign-in')}>
             <Text className="font-JakartaBold">Sign In</Text>
         </TouchableOpacity>
 
       <Center className="mt-14">
-        <Image source={require('@/assets/images/bg.png')} className=" w-full h-[380px]"/>
+        <Image source={require('@/assets/images/bg.png')} className=" w-full h-[380px]" alt="welcome" />
       </Center>
 
       <VStack className="items-center" >
@@ -34,7 +34,7 @@ const Welcome = () =>  {
       </VStack>
 
       <Box className="mt-10 items-center px-4 ">
-        <TouchableOpacity className="bg-[#0286ff] w-full p-3 rounded-full" onPress={() => router.replace('/(public)/sign-up')}>
+        <TouchableOpacity className="bg-[#0286ff] w-full p-3 rounded-full" onPress={() => router.replace('/sign-up')}>
           <Text className="text-center text-2xl font-JakartaBold text-white">Get Started</Text>
         </TouchableOpacity>
       </Box>

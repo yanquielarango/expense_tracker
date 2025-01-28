@@ -34,7 +34,7 @@ export default function LoginForm() {
       // and redirect the user
       if (signInAttempt.status === 'complete') {
         await setActive({ session: signInAttempt.createdSessionId })
-        router.replace('/(auth)/(tabs)/home')
+        router.replace('/(tabs)/home')
       } else {
         // See https://clerk.com/docs/custom-flows/error-handling for more info on error handling
         console.log(JSON.stringify(signInAttempt, null, 2));
@@ -93,7 +93,7 @@ export default function LoginForm() {
 
           <HStack className="justify-center items-center mt-8" space="md">
             <Text className="text-black font-JakartaSemiBold ">Don't have an account?</Text>
-            <Link  href='/(public)/sign-up' className="text-[#0286ff] font-JakartaSemiBold">Sign up</Link>
+            <Link  href='/(auth)/sign-up' className="text-[#0286ff] font-JakartaSemiBold">Sign up</Link>
           </HStack>
 
         </VStack>

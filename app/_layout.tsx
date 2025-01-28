@@ -49,24 +49,26 @@ const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!
 
 
     useEffect(() => {
-      if (!isLoaded) return;
+      if (!isLoaded) return
 
-      const inTabsGroup = segments[0] === '(auth)';
+      const inTabsGroup = segments[0] === "(tabs)"
+      const inAuthGroup = segments[0] === "(auth)"
 
       if (isSignedIn && !inTabsGroup) {
-        router.replace('/(auth)/(tabs)/home');
-      } else if (!isSignedIn && inTabsGroup) {
-        router.replace('/(public)/welcome');
+        // Si está autenticado pero no en tabs, redirigir a home
+        router.replace("/(tabs)/home")
+      } else if (!isSignedIn && !inAuthGroup) {
+        // Si no está autenticado y no en auth, redirigir a welcome
+        router.replace("/(auth)/welcome")
       }
+    }, [isSignedIn]) // Added router.replace to dependencies
 
-      console.log(segments[0]);
-    }, [isSignedIn]);
 
 
     return (
         <Stack screenOptions={{contentStyle: { backgroundColor: '#171717'}}}>
           <Stack.Screen name='(auth)' options={{headerShown: false}}/>
-          <Stack.Screen name='(public)' options={{headerShown: false}}/>
+          <Stack.Screen name='(tabs)' options={{headerShown: false}}/>
         </Stack>
     )
 

@@ -1,10 +1,10 @@
 import React, { useState } from "react"
-import {Alert, TouchableOpacity, Text} from "react-native"
+import {Alert, TouchableOpacity, Text, ScrollView} from "react-native"
 import {useSignUp} from "@clerk/clerk-expo";
 import {ReactNativeModal} from "react-native-modal";
 
 import {  Mail, User, Lock  } from "lucide-react-native";
-import { Link, useRouter } from "expo-router";
+import {Link, router} from "expo-router";
 import { VStack } from "@/components/ui/vstack";
 import InputField from "@/components/InputField";
 import { SafeAreaView } from "react-native-safe-area-context"
@@ -12,30 +12,26 @@ import { Box } from "@/components/ui/box";
 import { Divider } from '@/components/ui/divider';
 import { HStack } from "@/components/ui/hstack";
 import { Image } from "@/components/ui/image";
+import { OtpInput } from 'react-native-otp-entry';
 
 
 
 
 
 export default function Signup() {
-  const {isLoaded, signUp, setActive} = useSignUp()
-
-  const router = useRouter()
+  const { isLoaded, signUp, setActive } = useSignUp();
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const [form, setForm] = useState({
-    name:"",
+    name: "",
     email: "",
     password: "",
   });
-
   const [verification, setVerification] = useState({
     state: "default",
     error: "",
     code: "",
   });
-
-  const [showPassword, setShowPassword] = useState(false)
-
 
   const onSignUpPress = async () => {
     if (!isLoaded) return;
@@ -56,8 +52,6 @@ export default function Signup() {
       Alert.alert("Error", err.errors[0].longMessage);
     }
   };
-
-
   const onPressVerify = async () => {
     if (!isLoaded) return;
     try {
@@ -65,7 +59,14 @@ export default function Signup() {
         code: verification.code,
       });
       if (completeSignUp.status === "complete") {
-
+        // await fetchAPI("/(api)/user", {
+        //   method: "POST",
+        //   body: JSON.stringify({
+        //     name: form.name,
+        //     email: form.email,
+        //     clerkId: completeSignUp.createdUserId,
+        //   }),
+        // });
         await setActive({ session: completeSignUp.createdSessionId });
         setVerification({
           ...verification,
@@ -90,10 +91,11 @@ export default function Signup() {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-white">
+
+    <ScrollView className="flex-1 bg-white">
       <VStack  className="p-4" >
 
-        <VStack className="mt-8" >
+        <VStack className="mt-14" >
 
 
             <VStack space="md" className="">
@@ -136,7 +138,7 @@ export default function Signup() {
               <Text className="text-center text-2xl text-white font-JakartaBold">Sign Up</Text>
             </TouchableOpacity>
             <Link
-                href="/(public)/sign-in"
+                href="/(auth)/sign-in"
                 className="text-lg text-center text-general-200  mt-5"
             >
               Already have an account?{" "}
@@ -162,8 +164,16 @@ export default function Signup() {
 
 
         <ReactNativeModal
-            isVisible={verification.state === "pending"} onModalHide={() => setVerification({...verification, state: "success"})}
-        >
+            isVisible={verification.state === "pending"}
+            // onBackdropPress={() =>
+            //   setVerification({ ...verification, state: "default" })
+            // }
+            onModalHide={() => {
+              if (verification.state === "success") {
+                setShowSuccessModal(true);
+              }
+            }}
+             >
           <VStack className="bg-white px-7 py-9 rounded-2xl min-h-[300px]">
             <Text className="font-JakartaExtraBold text-2xl mb-2">
               Verification
@@ -171,18 +181,20 @@ export default function Signup() {
             <Text className="font-Jakarta mb-5">
               We've sent a verification code to {form.email}.
             </Text>
-            <InputField
-                label={"Code"}
-                icon={Lock}
-                placeholder={"12345"}
-                value={verification.code}
-                keyboardType="numeric"
-                onChangeText={(code) =>
-                    setVerification({ ...verification, code })
-                }
+
+            <OtpInput
+                type='numeric'
+                onTextChange={(code) => setVerification({ ...verification, code })}
+                secureTextEntry={false}
+                numberOfDigits={6}
+                autoFocus={true}
+                focusStickBlinkingDuration={500}
+                onFilled={onPressVerify}
+
             />
+
             {verification.error && (
-                <Text className="text-red-500 text-sm mt-1">
+                <Text className="text-red-500 text-lg mt-2">
                   {verification.error}
                 </Text>
             )}
@@ -193,7 +205,7 @@ export default function Signup() {
           </VStack>
         </ReactNativeModal>
 
-        <ReactNativeModal isVisible={verification.state === "success"}>
+        <ReactNativeModal isVisible={showSuccessModal}>
           <VStack className="bg-white px-7 py-9 rounded-2xl min-h-[300px]">
             <Image source={require('@/assets/images/check.png')} className="w-[100px] h-[100px] mx-auto my-5"/>
             <Text className="text-3xl font-JakartaBold text-center">
@@ -202,14 +214,14 @@ export default function Signup() {
             <Text className="text-base text-gray-400 font-Jakarta text-center mt-2">
               You have successfully verified your account.
             </Text>
-            <TouchableOpacity className="bg-[#171717] w-full p-3 rounded-full mt-8" onPress={() => router.replace('/(auth)/(tabs)/home') }>
+            <TouchableOpacity className="bg-[#171717] w-full p-3 rounded-full mt-8" onPress={() => router.push('/(tabs)/home') }>
               <Text className="text-center text-2xl text-white font-bold">Browse Home</Text>
             </TouchableOpacity>
           </VStack>
         </ReactNativeModal>
 
       </VStack>
-    </SafeAreaView>
+    </ScrollView>
   )
 }
 
