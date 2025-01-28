@@ -6,7 +6,7 @@ import {
     KeyboardAvoidingView,
     TouchableWithoutFeedback,
     Keyboard,
-    Platform,
+    Platform, TouchableOpacity,
 } from "react-native";
 
 import { InputFieldProps } from "@/types/type";
@@ -15,12 +15,14 @@ import { Icon } from "./ui/icon";
 const InputField = ({
                         label,
                         icon,
+                        icon2,
                         secureTextEntry = false,
                         labelStyle,
                         containerStyle,
                         inputStyle,
                         iconStyle,
                         className,
+                        onPress,
                         ...props
                     }: InputFieldProps) => {
     return (
@@ -36,16 +38,22 @@ const InputField = ({
                         {label}
                     </Text>
                     <View
-                        className={`flex flex-row justify-start items-center relative bg-neutral-100 rounded-full border border-neutral-100 focus:border-primary-500  ${containerStyle}`}
+                        className={`flex flex-row justify-start items-center   rounded-full border border-neutral-300 focus:border-[#0286ff]  ${containerStyle}`}
                     >
                         {icon && (
-                            <Icon as={icon} className={`w-6 h-6 ml-4 ${iconStyle}`} />
+                            <Icon as={icon} className={`w-6 h-6 ml-4 ${iconStyle} color-neutral-500`} />
                         )}
                         <TextInput
-                            className={`rounded-full p-4 font-JakartaSemiBold text-[15px] flex-1 ${inputStyle} text-left`}
+                            className={`rounded-full p-4 font-JakartaSemiBold text-[15px] flex-1  focus:border-[#0286ff] ${inputStyle} text-left`}
                             secureTextEntry={secureTextEntry}
                             {...props}
                         />
+                        {icon2 && (
+                           <TouchableOpacity  onPress={onPress}>
+                               <Icon as={icon2} className={`w-6 h-6 ml-4 ${iconStyle} color-neutral-500 mr-5`}  />
+                           </TouchableOpacity>
+
+                        )}
                     </View>
                 </View>
             </TouchableWithoutFeedback>

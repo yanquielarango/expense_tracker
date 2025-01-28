@@ -3,7 +3,7 @@ import {Alert, TouchableOpacity, Text, ScrollView} from "react-native"
 import {useSignUp} from "@clerk/clerk-expo";
 import {ReactNativeModal} from "react-native-modal";
 
-import {  Mail, User, Lock  } from "lucide-react-native";
+import {Mail, User, Lock, EyeOff, Eye} from "lucide-react-native";
 import {Link, router} from "expo-router";
 import { VStack } from "@/components/ui/vstack";
 import InputField from "@/components/InputField";
@@ -13,6 +13,8 @@ import { Divider } from '@/components/ui/divider';
 import { HStack } from "@/components/ui/hstack";
 import { Image } from "@/components/ui/image";
 import { OtpInput } from 'react-native-otp-entry';
+import {useMutation} from "convex/react";
+import { api } from "@/convex/_generated/api";
 
 
 
@@ -21,6 +23,10 @@ import { OtpInput } from 'react-native-otp-entry';
 export default function Signup() {
   const { isLoaded, signUp, setActive } = useSignUp();
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+
+  const [showPassword, setShowPassword] = useState(false)
+
+
 
   const [form, setForm] = useState({
     name: "",
@@ -105,6 +111,7 @@ export default function Signup() {
         throw new Error("Verification failed")
       }
 
+
       await setActive({ session: completeSignUp.createdSessionId })
       console.log("Session set active")
       setVerification({
@@ -172,11 +179,13 @@ export default function Signup() {
             <InputField
                 label="Password"
                 placeholder="Enter password"
-                secureTextEntry={true}
+                secureTextEntry={showPassword}
                 textContentType="password"
                 value={form.password}
                 onChangeText={(value) => setForm({ ...form, password: value })}
                 icon={Lock}
+                icon2={showPassword ? EyeOff : Eye}
+                onPress={() => setShowPassword(!showPassword)}
             />
             <TouchableOpacity className="bg-[#0286ff] w-full p-3 rounded-full mt-8" onPress={() => onSignUpPress() }>
               <Text className="text-center text-2xl text-white font-JakartaBold">Sign Up</Text>

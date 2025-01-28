@@ -7,7 +7,7 @@ import { SafeAreaView } from "react-native-safe-area-context"
 import { HStack } from "@/components/ui/hstack";
 import {useSignIn } from "@clerk/clerk-expo";
 import InputField from "@/components/InputField";
-import {Lock, Mail} from "lucide-react-native";
+import {Lock, Mail, Eye, EyeOff} from "lucide-react-native";
 
 export default function LoginForm() {
   const { signIn, setActive, isLoaded } = useSignIn()
@@ -84,6 +84,7 @@ export default function LoginForm() {
               value={form.password}
               onChangeText={(value) => setForm({ ...form, password: value })}
               icon={Lock}
+              icon2={showPassword ? EyeOff : Eye}
           />
           
 
@@ -91,9 +92,14 @@ export default function LoginForm() {
               <Text className="text-center text-2xl font-JakartaBold text-white">Sign In</Text>
           </TouchableOpacity>
 
-          <HStack className="justify-center items-center mt-8" space="md">
-            <Text className="text-black font-JakartaSemiBold ">Don't have an account?</Text>
-            <Link  href='/(auth)/sign-up' className="text-[#0286ff] font-JakartaSemiBold">Sign up</Link>
+          <HStack className="justify-center items-center " >
+            <Link
+                href="/(auth)/sign-up"
+                className="text-lg text-center text-general-200  mt-5"
+            >
+              Don't have an account?{" "}
+              <Text className="text-[#0286ff] font-JakartaBold">Sign up</Text>
+            </Link>
           </HStack>
 
         </VStack>
