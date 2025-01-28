@@ -1,4 +1,4 @@
-import { Stack } from "expo-router";
+import {Slot, Stack, useRouter, useSegments} from "expo-router";
 import { useEffect } from "react";
 import { Inter_900Black, useFonts } from '@expo-google-fonts/inter';
 import * as SplashScreen from 'expo-splash-screen';
@@ -25,40 +25,71 @@ const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!
     unsavedChangesWarning: false,
   });
 
-export default function RootLayout() {
-  const [loaded, error] = useFonts({
-    Inter_900Black,
-  });
+  const InitialLayout = () => {
+    const [loaded, error] = useFonts({
+      "Jakarta-Bold": require("../assets/fonts/PlusJakartaSans-Bold.ttf"),
+      "Jakarta-ExtraBold": require("../assets/fonts/PlusJakartaSans-ExtraBold.ttf"),
+      "Jakarta-ExtraLight": require("../assets/fonts/PlusJakartaSans-ExtraLight.ttf"),
+      "Jakarta-Light": require("../assets/fonts/PlusJakartaSans-Light.ttf"),
+      "Jakarta-Medium": require("../assets/fonts/PlusJakartaSans-Medium.ttf"),
+      "Jakarta": require("../assets/fonts/PlusJakartaSans-Regular.ttf"),
+      "Jakarta-SemiBold": require("../assets/fonts/PlusJakartaSans-SemiBold.ttf"),
+    });
 
-  useEffect(() => {
-    if (loaded || error) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded, error]);
+    const { isLoaded, isSignedIn } = useAuth();
+    const segments = useSegments();
+    const router = useRouter();
 
-  if (!loaded && !error) {
-    return null;
+    useEffect(() => {
+      if (loaded || error) {
+        SplashScreen.hideAsync();
+      }
+    }, [loaded, error]);
+
+
+
+    useEffect(() => {
+      if (!isLoaded) return;
+
+      const inTabsGroup = segments[0] === '(auth)';
+
+      if (isSignedIn && !inTabsGroup) {
+        router.replace('/(auth)/(tabs)/home');
+      } else if (!isSignedIn && inTabsGroup) {
+        router.replace('/(public)/welcome');
+      }
+
+      console.log(segments[0]);
+    }, [isSignedIn]);
+
+
+    return (
+        <Stack screenOptions={{contentStyle: { backgroundColor: '#171717'}}}>
+          <Stack.Screen name='(auth)' options={{headerShown: false}}/>
+          <Stack.Screen name='(public)' options={{headerShown: false}}/>
+        </Stack>
+    )
+
   }
 
 
-
+const  RootLayout = () => {
   return (
     <GluestackUIProvider mode="light">
       <ClerkProvider publishableKey={publishableKey} tokenCache={tokenCache}>
         <ClerkLoaded>
           <ConvexProviderWithClerk client={convex} useAuth={useAuth}>
-            <Stack screenOptions={{contentStyle: { backgroundColor: '#171717'}}}>
-              <Stack.Screen name='index' options={{headerShown: false}}/>
-              <Stack.Screen name='(auth)' options={{headerShown: false}}/>
-              <Stack.Screen name='(tabs)' options={{headerShown: false}}/>
-            </Stack>
+              <InitialLayout />
           </ConvexProviderWithClerk>
 
         </ClerkLoaded>
 
       </ClerkProvider>
 
-      <StatusBar style="light"  backgroundColor={colors.neutral900}/>
+      <StatusBar style="dark" />
     </GluestackUIProvider>
   )
 }
+
+
+export default RootLayout;

@@ -14,7 +14,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#171717"
+        "backgroundColor": "#ffffff"
       },
       "package": "com.yanquiel.expense_tracker"
     },
@@ -28,9 +28,9 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splashImage.png",
+          "image": "./assets/images/pig-d.png",
           "resizeMode": "contain",
-          "backgroundColor": "#171717"
+          "backgroundColor": "#ffffff"
         }
       ]
     ],
