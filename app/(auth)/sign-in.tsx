@@ -79,12 +79,13 @@ export default function LoginForm() {
           <InputField
               label="Password"
               placeholder="Enter password"
-              secureTextEntry={true}
+              secureTextEntry={!showPassword}
               textContentType="password"
               value={form.password}
               onChangeText={(value) => setForm({ ...form, password: value })}
               icon={Lock}
-              icon2={showPassword ? EyeOff : Eye}
+              icon2={showPassword ? Eye : EyeOff}
+              onPress={() => setShowPassword(!showPassword)}
           />
           
 

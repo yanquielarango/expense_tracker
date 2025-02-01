@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "expense_tracker",
-    "slug": "expense_tracker",
+    "name": "expense-tracker",
+    "slug": "expense-tracker",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -15,7 +15,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.yanquiel.expensetracker"
     },
     "web": {
       "bundler": "metro",
@@ -41,7 +42,7 @@
         "origin": false
       },
       "eas": {
-        "projectId": "27a3762a-fad9-4e2d-92ac-41c75af9f307"
+        "projectId": "6e579777-57c8-46f5-9101-14f9d830463e"
       }
     }
   }

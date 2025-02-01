@@ -21,9 +21,15 @@ const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!
     throw new Error('Add EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY in your .env')
   }
 
+
+
   const convex = new ConvexReactClient(process.env.EXPO_PUBLIC_CONVEX_URL!, {
     unsavedChangesWarning: false,
   });
+
+if (!convex) {
+  throw new Error("Missing Convex URL")
+}
 
   const InitialLayout = () => {
     const [loaded, error] = useFonts({
@@ -69,6 +75,7 @@ const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!
         <Stack screenOptions={{contentStyle: { backgroundColor: '#171717'}}}>
           <Stack.Screen name='(auth)' options={{headerShown: false}}/>
           <Stack.Screen name='(tabs)' options={{headerShown: false}}/>
+          <Stack.Screen name='(modals)' options={{headerShown: false}} />
         </Stack>
     )
 
