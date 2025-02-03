@@ -34,7 +34,7 @@ const Welcome = () =>  {
       </VStack>
 
       <Box className="mt-10 items-center px-4 ">
-        <TouchableOpacity className="bg-[#0286ff] w-full p-3 rounded-full" onPress={() => router.replace('/sign-up')}>
+        <TouchableOpacity className="bg-[#0286ff] w-full p-3  rounded-xl" onPress={() => router.replace('/sign-up')}>
           <Text className="text-center text-2xl font-JakartaBold text-white">Get Started</Text>
         </TouchableOpacity>
       </Box>

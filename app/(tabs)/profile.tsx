@@ -26,43 +26,50 @@ const profile = () => {
             <ProfileCard/>
             <Divider className="mt-12 mb-8" />
             <VStack space="4xl">
-                <HStack className="justify-between">
-                    <HStack space="md">
-                        <Icon as={User}  className='w-7 h-7'/>
-                        <Text className='text-xl'>Profile</Text>
+                <Pressable onPress={() => router.push('/(modals)/profileModal')}>
+                    <HStack className="justify-between">
+                            <HStack space="md">
+                                <Icon as={User}  className='w-7 h-7'/>
+                                <Text className='text-xl'>Profile</Text>
+                            </HStack>
+                            <Icon as={ChevronRight}  className='w-7 h-7' />
                     </HStack>
-                    <Pressable onPress={() => router.push('/(modals)/profileModal')}>
-                        <Icon as={ChevronRight}  className='w-7 h-7' />
-                    </Pressable>
-                </HStack>
-                <HStack className="justify-between items-center">
-                    <HStack space="md">
-                        <Icon as={Bell}  className='w-7 h-7'/>
-                        <Text className='text-xl'>Notifications</Text>
-                    </HStack>
-                    <Pressable>
-                        <Icon as={ChevronRight}  className='w-7 h-7' />
-                    </Pressable>
-                </HStack>
+                </Pressable>
 
-                <HStack className="justify-between">
-                    <HStack space="md">
-                        <Icon as={Lock}   className='w-7 h-7'/>
-                        <Text className='text-xl'>Privacy Policy</Text>
-                    </HStack>
-                    <Pressable>
-                        <Icon as={ChevronRight}   className='w-7 h-7'/>
-                    </Pressable>
-                </HStack>
-                <HStack className="justify-between  ">
-                    <HStack space="md" className="">
-                        <Icon as={HeadsetIcon}   className='w-7 h-7'/>
-                        <Text className='text-xl'>Contact Support</Text>
-                    </HStack>
-                    <Pressable>
+
+                <Pressable onPress={() => router.push('/(modals)/profileModal')}>
+                    <HStack className="justify-between items-center">
+                        <HStack space="md">
+                            <Icon as={Bell}  className='w-7 h-7'/>
+                            <Text className='text-xl'>Notifications</Text>
+                        </HStack>
                         <Icon as={ChevronRight}  className='w-7 h-7' />
-                    </Pressable>
-                </HStack>
+                    </HStack>
+                </Pressable>
+
+
+               <Pressable onPress={() =>router.push('/(modals)/profileModal')}>
+                   <HStack className="justify-between">
+                       <HStack space="md">
+                           <Icon as={Lock}   className='w-7 h-7'/>
+                           <Text className='text-xl'>Privacy Policy</Text>
+                       </HStack>
+                       <Icon as={ChevronRight}   className='w-7 h-7'/>
+                   </HStack>
+               </Pressable>
+
+
+
+                <Pressable onPress={() =>router.push('/(modals)/profileModal')}>
+                    <HStack className="justify-between  ">
+                        <HStack space="md" className="">
+                            <Icon as={HeadsetIcon}   className='w-7 h-7'/>
+                            <Text className='text-xl'>Contact Support</Text>
+                        </HStack>
+                        <Icon as={ChevronRight}  className='w-7 h-7' />
+                    </HStack>
+                </Pressable>
+
             </VStack>
             <Divider className="mt-12 mb-8" />
 

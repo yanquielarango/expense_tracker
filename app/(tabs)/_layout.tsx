@@ -13,9 +13,10 @@ export default function TabsLayout() {
                     paddingVertical: 5,
 
                 },
-                tabBarActiveTintColor: "#0286ff",
+                // tabBarActiveTintColor: "#0286ff",
                 // tabBarInactiveTintColor: "#a3a3a3",
-                tabBarInactiveTintColor: "#262626",
+                tabBarActiveTintColor: "#0d579b",
+                tabBarInactiveTintColor: "#6d6d6d",
                 tabBarLabelStyle: {
                     fontSize: 12,
                     fontWeight: "bold",
@@ -38,7 +39,7 @@ export default function TabsLayout() {
                 name="expense"
                 options={{
                     tabBarIcon: ({ color }) => <ChartNoAxesCombined  size={24} color={color} />,
-                    tabBarLabel: "Statistics"
+                    tabBarLabel: "Stats"
 
                 }}
             />

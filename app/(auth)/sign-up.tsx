@@ -3,16 +3,17 @@ import {Alert, TouchableOpacity, Text, ScrollView} from "react-native"
 import {useSignUp, useUser} from "@clerk/clerk-expo";
 import {ReactNativeModal} from "react-native-modal";
 
-import {Mail, User, Lock, EyeOff, Eye} from "lucide-react-native";
+import { EyeIcon, EyeOffIcon} from "lucide-react-native";
 import {Link, router} from "expo-router";
 import { VStack } from "@/components/ui/vstack";
-import InputField from "@/components/InputField";
+
 
 import { HStack } from "@/components/ui/hstack";
 import { Image } from "@/components/ui/image";
 import { OtpInput } from 'react-native-otp-entry';
 import {useMutation} from "convex/react";
 import { api } from "@/convex/_generated/api";
+import {Input, InputField, InputIcon, InputSlot} from "@/components/ui/input";
 
 
 
@@ -113,7 +114,7 @@ export default function Signup() {
   return (
 
       <ScrollView className="flex-1 bg-white">
-        <VStack  className="p-4" >
+        <VStack  className="p-6" >
 
           <VStack className="mt-14" >
 
@@ -129,34 +130,32 @@ export default function Signup() {
 
 
 
-            <VStack className="p-5">
-              <InputField
-                  label="Name"
-                  placeholder="Enter name"
-                  value={form.name}
-                  onChangeText={(value) => setForm({ ...form, name: value })}
-                  icon={User}
-              />
-              <InputField
-                  label="Email"
-                  placeholder="Enter email"
-                  textContentType="emailAddress"
-                  value={form.email}
-                  onChangeText={(value) => setForm({ ...form, email: value })}
-                  icon={Mail}
-              />
-              <InputField
-                  label="Password"
-                  placeholder="Enter password"
-                  secureTextEntry={!showPassword}
-                  textContentType="password"
-                  value={form.password}
-                  onChangeText={(value) => setForm({ ...form, password: value })}
-                  icon={Lock}
-                  icon2={showPassword ? Eye : EyeOff}
-                  onPress={() => setShowPassword(!showPassword)}
-              />
-              <TouchableOpacity className="bg-[#0286ff] w-full p-3 rounded-full mt-8" onPress={() => onSignUpPress() }>
+            <VStack className="">
+
+              <VStack space="xs" className='mt-4 mb-4'>
+                <Text className="text-typography-700 font-JakartaBold">Name</Text>
+                <Input className="min-w-[250px]" size="xl" >
+                  <InputField type="text"  className='rounded-2xl' placeholder="Enter your name" onChangeText={(value) => setForm({ ...form, name: value })}  value={form.name} />
+                </Input>
+              </VStack>
+              <VStack space="xs" className='mb-4'>
+                <Text className="text-typography-700 font-JakartaBold">Email</Text>
+                <Input className="min-w-[250px]" size="xl">
+                  <InputField type="text"  placeholder="Enter your  email"  onChangeText={(value) => setForm({ ...form, email: value })} value={form.email}/>
+                </Input>
+              </VStack>
+              <VStack space="xs">
+                <Text className="text-typography-700 font-JakartaBold">Password</Text>
+                <Input className="text-typography-700 " size="xl">
+                  <InputField type={showPassword ? "text" : "password"}  placeholder="Enter your password" onChangeText={(value) => setForm({ ...form, password: value })} value={form.password}/>
+                  <InputSlot className="pr-3" onPress={() => setShowPassword(!showPassword)} >
+                    <InputIcon as={showPassword ? EyeIcon : EyeOffIcon} />
+                  </InputSlot>
+                </Input>
+              </VStack>
+
+
+              <TouchableOpacity className="bg-[#0286ff] w-full p-3 rounded-xl mt-8" onPress={() => onSignUpPress() }>
                 <Text className="text-center text-2xl text-white font-JakartaBold">Sign Up</Text>
               </TouchableOpacity>
               <Link

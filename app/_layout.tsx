@@ -72,7 +72,7 @@ if (!convex) {
 
 
     return (
-        <Stack screenOptions={{contentStyle: { backgroundColor: '#171717'}}}>
+        <Stack>
           <Stack.Screen name='(auth)' options={{headerShown: false}}/>
           <Stack.Screen name='(tabs)' options={{headerShown: false}}/>
           <Stack.Screen name='(modals)' options={{headerShown: false}} />

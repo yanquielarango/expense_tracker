@@ -6,8 +6,8 @@ import { VStack } from "@/components/ui/vstack";
 import { SafeAreaView } from "react-native-safe-area-context"
 import { HStack } from "@/components/ui/hstack";
 import {useSignIn } from "@clerk/clerk-expo";
-import InputField from "@/components/InputField";
-import {Lock, Mail, Eye, EyeOff} from "lucide-react-native";
+import { EyeIcon, EyeOffIcon} from "lucide-react-native";
+import {Input, InputIcon, InputSlot, InputField} from "@/components/ui/input";
 
 export default function LoginForm() {
   const { signIn, setActive, isLoaded } = useSignIn()
@@ -53,7 +53,7 @@ export default function LoginForm() {
 
   return (
     <SafeAreaView className="flex-1 bg-white">
-      <VStack  className="p-4" >
+      <VStack  className="p-6" >
 
 
         <VStack className="mt-8" >
@@ -66,30 +66,27 @@ export default function LoginForm() {
               <Text className="text-typography-800 text-2xl mb-6 font-Jakarta">Login now to tack all your expenses</Text>
             </VStack>
 
+          <VStack space="xs" className='mb-4'>
+            <Text className="text-typography-700 font-JakartaBold">Email</Text>
+            <Input className="min-w-[250px]" size="xl">
+              <InputField type="text"  placeholder="Enter your  email"  onChangeText={(value) => setForm({ ...form, email: value })} value={form.email}/>
+            </Input>
+          </VStack>
+          <VStack space="xs">
+            <Text className="text-typography-700 font-JakartaBold">Password</Text>
+            <Input className="text-center" size="xl">
+              <InputField type={showPassword ? "text" : "password"}  placeholder="Enter your password" onChangeText={(value) => setForm({ ...form, password: value })} value={form.password}/>
+              <InputSlot className="pr-3" onPress={() => setShowPassword(!showPassword)} >
+                <InputIcon as={showPassword ? EyeIcon : EyeOffIcon} />
+              </InputSlot>
+            </Input>
+          </VStack>
 
-          <InputField
-              label="Email"
-              placeholder="Enter email"
-              textContentType="emailAddress"
-              value={form.email}
-              onChangeText={(value) => setForm({ ...form, email: value })}
-              icon={Mail}
-          />
 
-          <InputField
-              label="Password"
-              placeholder="Enter password"
-              secureTextEntry={!showPassword}
-              textContentType="password"
-              value={form.password}
-              onChangeText={(value) => setForm({ ...form, password: value })}
-              icon={Lock}
-              icon2={showPassword ? Eye : EyeOff}
-              onPress={() => setShowPassword(!showPassword)}
-          />
-          
 
-          <TouchableOpacity className="bg-[#0286ff] w-full p-3 rounded-full mt-14" onPress={ onSignInPress }>
+
+
+          <TouchableOpacity className="bg-[#0286ff] w-full p-3 rounded-xl mt-14" onPress={ onSignInPress }>
               <Text className="text-center text-2xl font-JakartaBold text-white">Sign In</Text>
           </TouchableOpacity>
 
