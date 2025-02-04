@@ -170,13 +170,14 @@ module.exports = {
         },
       },
       fontFamily: {
-        Jakarta: ["Jakarta", "sans-serif"],
-        JakartaBold: ["Jakarta-Bold", "sans-serif"],
-        JakartaExtraBold: ["Jakarta-ExtraBold", "sans-serif"],
-        JakartaExtraLight: ["Jakarta-ExtraLight", "sans-serif"],
-        JakartaLight: ["Jakarta-Light", "sans-serif"],
-        JakartaMedium: ["Jakarta-Medium", "sans-serif"],
-        JakartaSemiBold: ["Jakarta-SemiBold", "sans-serif"],
+        Outfit: ["Outfit-Regular", "sans-serif"],
+        OutfitBold: ["Outfit-Bold", "sans-serif"],
+        OutfitLight: ["Outfit-Light", "sans-serif"],
+        OutfitExtraLight: ["Outfit-ExtraLight", "sans-serif"],
+        OutfitMedium: ["Outfit-Medium", "sans-serif"],
+        OutfitSemibold: ["Outfit-Semibold", "sans-serif"],
+        OutfitExtraBold: ["Outfit-ExtraBold", "sans-serif"],
+
       },
       fontWeight: {
         extrablack: '950',

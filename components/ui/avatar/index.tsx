@@ -30,6 +30,7 @@ const avatarStyle = tva({
       'lg': 'w-16 h-16',
       'xl': 'w-24 h-24',
       '2xl': 'w-32 h-32',
+      '3xl': 'w-48 h-48',
     },
   },
 });
@@ -54,7 +55,7 @@ const avatarGroupStyle = tva({
 });
 
 const avatarBadgeStyle = tva({
-  base: 'w-5 h-5 bg-success-500 rounded-full absolute right-0 bottom-0 border-background-0 border-2',
+  base: 'w-12 h-12 bg-primary-400 rounded-full absolute right-0 bottom-1 border-background-0 border-2',
   parentVariants: {
     size: {
       'xs': 'w-2 h-2',
@@ -63,6 +64,7 @@ const avatarBadgeStyle = tva({
       'lg': 'w-4 h-4',
       'xl': 'w-6 h-6',
       '2xl': 'w-8 h-8',
+      '3xl': 'w-12 h-12',
     },
   },
 });

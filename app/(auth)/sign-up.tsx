@@ -120,12 +120,12 @@ export default function Signup() {
 
 
             <VStack space="md" className="">
-              <Text className="text-black font-JakartaBold  text-5xl" >Let's,</Text>
-              <Text className="text-black  font-JakartaBold text-5xl" >Get Started</Text>
+              <Text className="text-black font-OutfitBold  text-5xl" >Let's,</Text>
+              <Text className="text-black  font-OutfitBold text-5xl" >Get Started</Text>
             </VStack>
 
             <VStack className="mt-6">
-              <Text  className="text-black mb-3 font-Jakarta text-xl">Create an account to track your expenses</Text>
+              <Text  className="text-black mb-3 font-Outfit text-xl">Create an account to track your expenses</Text>
             </VStack>
 
 
@@ -133,19 +133,19 @@ export default function Signup() {
             <VStack className="">
 
               <VStack space="xs" className='mt-4 mb-4'>
-                <Text className="text-typography-700 font-JakartaBold">Name</Text>
+                <Text className="text-typography-700 font-OutfitBold">Name</Text>
                 <Input className="min-w-[250px]" size="xl" >
                   <InputField type="text"  className='rounded-2xl' placeholder="Enter your name" onChangeText={(value) => setForm({ ...form, name: value })}  value={form.name} />
                 </Input>
               </VStack>
               <VStack space="xs" className='mb-4'>
-                <Text className="text-typography-700 font-JakartaBold">Email</Text>
+                <Text className="text-typography-700 font-OutfitBold">Email</Text>
                 <Input className="min-w-[250px]" size="xl">
                   <InputField type="text"  placeholder="Enter your  email"  onChangeText={(value) => setForm({ ...form, email: value })} value={form.email}/>
                 </Input>
               </VStack>
               <VStack space="xs">
-                <Text className="text-typography-700 font-JakartaBold">Password</Text>
+                <Text className="text-typography-700 font-OutfitBold">Password</Text>
                 <Input className="text-typography-700 " size="xl">
                   <InputField type={showPassword ? "text" : "password"}  placeholder="Enter your password" onChangeText={(value) => setForm({ ...form, password: value })} value={form.password}/>
                   <InputSlot className="pr-3" onPress={() => setShowPassword(!showPassword)} >
@@ -156,14 +156,14 @@ export default function Signup() {
 
 
               <TouchableOpacity className="bg-[#0286ff] w-full p-3 rounded-xl mt-8" onPress={() => onSignUpPress() }>
-                <Text className="text-center text-2xl text-white font-JakartaBold">Sign Up</Text>
+                <Text className="text-center text-2xl text-white font-OutfitBold">Sign Up</Text>
               </TouchableOpacity>
               <Link
                   href="/(auth)/sign-in"
-                  className="text-lg text-center text-general-200  mt-5"
+                  className="text-lg text-center  mt-5 font-OutfitBold text-typography-700"
               >
                 Already have an account?{" "}
-                <Text className="text-[#0286ff] font-JakartaBold">Log In</Text>
+                <Text className="text-[#0286ff] font-OutfitBold">Log In</Text>
               </Link>
             </VStack>
 

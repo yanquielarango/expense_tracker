@@ -27,8 +27,8 @@ console.log(userProfile)
                     />
                 </Avatar>
                 <VStack>
-                    <Text className="font-JakartaBold text-xl ">{userProfile?.firstName}</Text>
-                    <Text className='mt-1 font-Jakarta'>{userProfile?.email}</Text>
+                    <Text className="font-OutfitBold text-xl ">{userProfile?.firstName}</Text>
+                    <Text className='mt-1 font-Outfit'>{userProfile?.email}</Text>
                 </VStack>
             </HStack>
             

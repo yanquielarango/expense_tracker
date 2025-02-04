@@ -17,6 +17,14 @@ export default function ModalLayout() {
                     animation: "slide_from_bottom",
                 }}
             />
+            <Stack.Screen
+                name="contactSupport"
+                options={{
+                    headerShown: false,
+                    presentation: "modal",
+                    animation: "slide_from_bottom",
+                }}
+            />
 
 
         </Stack>

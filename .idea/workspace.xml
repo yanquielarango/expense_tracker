@@ -4,20 +4,41 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c777cc1-e24d-4465-88d3-cb6c6f85f50d" name="Changes" comment="">
+    <list default="true" id="7c777cc1-e24d-4465-88d3-cb6c6f85f50d" name="Changes" comment="create a home tab">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(auth)/sign-in.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/sign-in.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(auth)/sign-up.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/sign-up.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(auth)/welcome.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/welcome.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(modals)/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(modals)/_layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(modals)/profileModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(modals)/profileModal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(tabs)/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/_layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(tabs)/home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/home.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(tabs)/profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/profile.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/InputField.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fonts/PlusJakartaSans-Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fonts/PlusJakartaSans-BoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fonts/PlusJakartaSans-ExtraBold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fonts/PlusJakartaSans-ExtraBoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fonts/PlusJakartaSans-ExtraLight.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fonts/PlusJakartaSans-ExtraLightItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fonts/PlusJakartaSans-Italic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fonts/PlusJakartaSans-Light.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fonts/PlusJakartaSans-LightItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fonts/PlusJakartaSans-Medium.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fonts/PlusJakartaSans-MediumItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fonts/PlusJakartaSans-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fonts/PlusJakartaSans-SemiBold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fonts/PlusJakartaSans-SemiBoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/DeleteAcountDialig.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/DeleteAcountDialig.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ProfileCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ProfileCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/avatar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/avatar/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/ui/input/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/input/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/convex/auth.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/convex/auth.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/convex/users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/convex/users.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eas.json" beforeDir="false" afterPath="$PROJECT_DIR$/eas.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/type.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/type.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +115,9 @@
       <workItem from="1738345065251" duration="176000" />
       <workItem from="1738369963401" duration="597000" />
       <workItem from="1738406399560" duration="11594000" />
-      <workItem from="1738581559145" duration="15836000" />
+      <workItem from="1738581559145" duration="17332000" />
+      <workItem from="1738614906280" duration="5604000" />
+      <workItem from="1738693255785" duration="14823000" />
     </task>
     <task id="LOCAL-00001" summary="add otp field">
       <option name="closed" value="true" />
@@ -136,7 +159,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738430673212</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="create a home tab">
+      <option name="closed" value="true" />
+      <created>1738606748658</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1738606748658</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,7 +179,8 @@
     <MESSAGE value="set up user in the database" />
     <MESSAGE value="create profile screen" />
     <MESSAGE value="create a internal mutation and action to delete user from convex and from clerk" />
-    <option name="LAST_COMMIT_MESSAGE" value="create a internal mutation and action to delete user from convex and from clerk" />
+    <MESSAGE value="create a home tab" />
+    <option name="LAST_COMMIT_MESSAGE" value="create a home tab" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

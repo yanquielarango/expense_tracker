@@ -34,7 +34,7 @@ cssInterop(PrimitiveIcon, {
 });
 
 const inputStyle = tva({
-  base: ' border-typography-300  flex-row overflow-hidden content-center data-[hover=true]:border-outline-400 data-[focus=true]:border-[#0286ff]   data-[focus=true]:border-2  data-[focus=true]:hover:border-primary-700 data-[disabled=true]:opacity-40 data-[disabled=true]:hover:border-background-300 items-center',
+  base: '  border-typography-300  flex-row overflow-hidden content-center data-[hover=true]:border-outline-400 data-[focus=true]:border-background-300  data-[focus=true]:border-2  data-[focus=true]:hover:border-primary-700 data-[disabled=true]:opacity-40 data-[disabled=true]:hover:border-background-300 items-center',
 
   variants: {
     size: {
@@ -76,7 +76,7 @@ const inputSlotStyle = tva({
 });
 
 const inputFieldStyle = tva({
-  base: 'flex-1 text-black py-0 px-3 placeholder:text-typography-500 placeholder:text-base h-full ios:leading-[0px] web:cursor-text web:data-[disabled=true]:cursor-not-allowed',
+  base: 'flex-1 color-typography-900 py-0 px-3 placeholder:font-OutfitSemibold placeholder:text-base h-full ios:leading-[0px] web:cursor-text web:data-[disabled=true]:cursor-not-allowed',
 
   parentVariants: {
     variant: {

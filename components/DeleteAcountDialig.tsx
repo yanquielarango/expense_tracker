@@ -77,7 +77,7 @@ const LogoutAlertDialog = ({openDeleteAlertDialog, setOpenDeleteAlertDialog, }: 
                 </AlertDialogHeader>
                 <AlertDialogBody className="" contentContainerClassName="">
                     <Text className="mb-3">Are you sure, you want to delete the account ?</Text>
-                    {error && <Text className="text-red-500 mb-4 font-Jakarta">{error}</Text>}
+                    {error && <Text className="text-red-500 mb-4 font-Outfit">{error}</Text>}
                 </AlertDialogBody>
                 <AlertDialogFooter>
                     <Button variant="outline" action="secondary" onPress={handleClose}>

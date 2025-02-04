@@ -12,14 +12,17 @@ export default function TabsLayout() {
                     height: 60,
                     paddingVertical: 5,
 
+
                 },
                 // tabBarActiveTintColor: "#0286ff",
                 // tabBarInactiveTintColor: "#a3a3a3",
                 tabBarActiveTintColor: "#0d579b",
-                tabBarInactiveTintColor: "#6d6d6d",
+                tabBarInactiveTintColor: "#000",
                 tabBarLabelStyle: {
                     fontSize: 12,
                     fontWeight: "bold",
+                    fontFamily: "Outfit-Medium",
+
                 },
                 tabBarIconStyle: {
                     marginBottom: 2,

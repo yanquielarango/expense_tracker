@@ -169,4 +169,35 @@ export const deleteUser = mutation({
 })
 
 
+export const updateUserProfile = mutation({
+    args: {
+        name: v.string(),
+        imageUrl: v.optional(v.string()),
+    },
+    handler: async (ctx, args) => {
+        const identity = await ctx.auth.getUserIdentity();
+        if (!identity) {
+            throw new Error("Not authenticated");
+        }
 
+        const user = await userByExternalId(ctx, identity.subject);
+        if (!user) {
+            throw new Error("User not found");
+        }
+
+        const updateFields: {
+            firstName: string;
+            imageUrl?: string;
+        } = {
+            firstName: args.name,
+        };
+
+        if (args.imageUrl) {
+            updateFields.imageUrl = args.imageUrl;
+        }
+
+        await ctx.db.patch(user._id, updateFields);
+
+        return { success: true, message: "Profile updated successfully" };
+    },
+});

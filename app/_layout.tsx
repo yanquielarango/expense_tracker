@@ -1,6 +1,6 @@
-import {Slot, Stack, useRouter, useSegments} from "expo-router";
+import { Stack, useRouter, useSegments} from "expo-router";
 import { useEffect } from "react";
-import { Inter_900Black, useFonts } from '@expo-google-fonts/inter';
+import {  useFonts } from '@expo-google-fonts/inter';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from "expo-status-bar";
 import { ConvexProviderWithClerk } from "convex/react-clerk";
@@ -33,13 +33,13 @@ if (!convex) {
 
   const InitialLayout = () => {
     const [loaded, error] = useFonts({
-      "Jakarta-Bold": require("../assets/fonts/PlusJakartaSans-Bold.ttf"),
-      "Jakarta-ExtraBold": require("../assets/fonts/PlusJakartaSans-ExtraBold.ttf"),
-      "Jakarta-ExtraLight": require("../assets/fonts/PlusJakartaSans-ExtraLight.ttf"),
-      "Jakarta-Light": require("../assets/fonts/PlusJakartaSans-Light.ttf"),
-      "Jakarta-Medium": require("../assets/fonts/PlusJakartaSans-Medium.ttf"),
-      "Jakarta": require("../assets/fonts/PlusJakartaSans-Regular.ttf"),
-      "Jakarta-SemiBold": require("../assets/fonts/PlusJakartaSans-SemiBold.ttf"),
+     "Outfit-Regular": require("../assets/fonts/Outfit-Regular.ttf"),
+      "Outfit-Bold": require("../assets/fonts/Outfit-Bold.ttf"),
+     "Outfit-Light": require("../assets/fonts/Outfit-Light.ttf"),
+     "Outfit-ExtraLight": require("../assets/fonts/Outfit-ExtraLight.ttf"),
+     "Outfit-Medium": require("../assets/fonts/Outfit-Medium.ttf"),
+     "Outfit-Semibold": require("../assets/fonts/Outfit-SemiBold.ttf"),
+      "Outfit-ExtraBold": require("../assets/fonts/Outfit-ExtraBold.ttf"),
     });
 
     const { isLoaded, isSignedIn } = useAuth();

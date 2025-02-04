@@ -58,22 +58,22 @@ export default function LoginForm() {
 
         <VStack className="mt-8" >
             <VStack space="md" className="">
-              <Text className="text-black  text-4xl font-JakartaBold" >Hey 👋,</Text>
-              <Text className="text-black text-4xl font-JakartaBold" >Welcome back</Text>
+              <Text className="text-black  text-4xl font-OutfitBold" >Hey 👋,</Text>
+              <Text className="text-black text-4xl font-OutfitBold" >Welcome back</Text>
             </VStack>
 
             <VStack className="mt-10">
-              <Text className="text-typography-800 text-2xl mb-6 font-Jakarta">Login now to tack all your expenses</Text>
+              <Text className="text-typography-800 text-2xl mb-6 font-Outfit">Login now to tack all your expenses</Text>
             </VStack>
 
           <VStack space="xs" className='mb-4'>
-            <Text className="text-typography-700 font-JakartaBold">Email</Text>
+            <Text className="text-typography-700 font-OutfitBold">Email</Text>
             <Input className="min-w-[250px]" size="xl">
               <InputField type="text"  placeholder="Enter your  email"  onChangeText={(value) => setForm({ ...form, email: value })} value={form.email}/>
             </Input>
           </VStack>
           <VStack space="xs">
-            <Text className="text-typography-700 font-JakartaBold">Password</Text>
+            <Text className="text-typography-700 font-OutfitBold">Password</Text>
             <Input className="text-center" size="xl">
               <InputField type={showPassword ? "text" : "password"}  placeholder="Enter your password" onChangeText={(value) => setForm({ ...form, password: value })} value={form.password}/>
               <InputSlot className="pr-3" onPress={() => setShowPassword(!showPassword)} >
@@ -87,16 +87,16 @@ export default function LoginForm() {
 
 
           <TouchableOpacity className="bg-[#0286ff] w-full p-3 rounded-xl mt-14" onPress={ onSignInPress }>
-              <Text className="text-center text-2xl font-JakartaBold text-white">Sign In</Text>
+              <Text className="text-center text-2xl font-OutfitBold text-white">Sign In</Text>
           </TouchableOpacity>
 
           <HStack className="justify-center items-center " >
             <Link
                 href="/(auth)/sign-up"
-                className="text-lg text-center text-general-200  mt-5"
+                className="text-lg text-center text-typography-700  mt-5 font-OutfitBold"
             >
               Don't have an account?{" "}
-              <Text className="text-[#0286ff] font-JakartaBold">Sign up</Text>
+              <Text className="text-[#0286ff] font-OutfitBold">Sign up</Text>
             </Link>
           </HStack>
 

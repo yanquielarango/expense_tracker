@@ -22,7 +22,7 @@ const profile = () => {
     return (
       <SafeAreaView className="flex-1 bg-white">
         <VStack className="px-5 mt-4 " >
-            <Text className='font-JakartaBold text-3xl'>Profile</Text>
+            <Text className='font-OutfitBold text-3xl'>Profile</Text>
             <ProfileCard/>
             <Divider className="mt-12 mb-8" />
             <VStack space="4xl">
@@ -60,7 +60,7 @@ const profile = () => {
 
 
 
-                <Pressable onPress={() =>router.push('/(modals)/profileModal')}>
+                <Pressable onPress={() =>router.push('/(modals)/contactSupport')}>
                     <HStack className="justify-between  ">
                         <HStack space="md" className="">
                             <Icon as={HeadsetIcon}   className='w-7 h-7'/>
@@ -74,7 +74,7 @@ const profile = () => {
             <Divider className="mt-12 mb-8" />
 
            <VStack space="4xl">
-               <Pressable className="flex-row  items-center gap-2 " onPress={() => setOpenLogoutAlertDialog(true)}>
+               <Pressable className="flex-row   items-center gap-2 " onPress={() => setOpenLogoutAlertDialog(true)}>
                    <Icon as={LogOut  }  className='w-7 h-7 color-red-500' />
                    <Text className='text-xl color-red-500'>Logut </Text>
                </Pressable>
