@@ -20,8 +20,8 @@ const Home = () => {
         <VStack className='p-6  '>
             <HStack className="justify-between">
                 <VStack >
-                    <Text className="font-Outfit text-2xl ">Hello,</Text>
-                    <Text className="text-3xl font-OutfitBold mb-2">{userProfile?.firstName}</Text>
+                    <Text className="font-Outfit text-xl ">Hello,</Text>
+                    <Text className="text-2xl font-OutfitBold mb-2">{userProfile?.firstName}</Text>
                 </VStack>
 
                <TouchableOpacity>
