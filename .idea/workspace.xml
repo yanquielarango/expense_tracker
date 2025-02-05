@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7c777cc1-e24d-4465-88d3-cb6c6f85f50d" name="Changes" comment="solve issues related to contact support screen" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;yanquielarango&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/yanquielarango/expense_tracker.git&quot;,
+    &quot;accountId&quot;: &quot;748911a9-381e-4a15-9fce-9bbbf1b9ce4e&quot;
+  }
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2sGNfTzAuC8OLExmbwciLk2jBef" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\yanqu\\expense_tracker\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\yanqu\expense_tracker\utils" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-WS-243.23654.157" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7c777cc1-e24d-4465-88d3-cb6c6f85f50d" name="Changes" comment="" />
+      <created>1738078056975</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1738078056975</updated>
+      <workItem from="1738078059060" duration="22997000" />
+      <workItem from="1738143376945" duration="30798000" />
+      <workItem from="1738231659245" duration="25838000" />
+      <workItem from="1738316624064" duration="17882000" />
+      <workItem from="1738345065251" duration="176000" />
+      <workItem from="1738369963401" duration="597000" />
+      <workItem from="1738406399560" duration="11594000" />
+      <workItem from="1738581559145" duration="17332000" />
+      <workItem from="1738614906280" duration="5604000" />
+      <workItem from="1738693255785" duration="18980000" />
+      <workItem from="1738760239977" duration="2602000" />
+      <workItem from="1738764787568" duration="14123000" />
+    </task>
+    <task id="LOCAL-00001" summary="add otp field">
+      <option name="closed" value="true" />
+      <created>1738093221479</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1738093221479</updated>
+    </task>
+    <task id="LOCAL-00002" summary="fix otp modal code">
+      <option name="closed" value="true" />
+      <created>1738099694268</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1738099694268</updated>
+    </task>
+    <task id="LOCAL-00003" summary="set up user in the database">
+      <option name="closed" value="true" />
+      <created>1738106745778</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1738106745778</updated>
+    </task>
+    <task id="LOCAL-00004" summary="create a internal mutation and action to delete user from convex and from clerk">
+      <option name="closed" value="true" />
+      <created>1738430627024</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1738430627024</updated>
+    </task>
+    <task id="LOCAL-00005" summary="create a internal mutation and action to delete user from convex and from clerk">
+      <option name="closed" value="true" />
+      <created>1738430673212</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1738430673212</updated>
+    </task>
+    <task id="LOCAL-00006" summary="create a home tab">
+      <option name="closed" value="true" />
+      <created>1738606748658</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1738606748658</updated>
+    </task>
+    <task id="LOCAL-00007" summary="create a profile screen update and support contact screen">
+      <option name="closed" value="true" />
+      <created>1738708789536</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1738708789536</updated>
+    </task>
+    <task id="LOCAL-00008" summary="solve issues related to contact support screen">
+      <option name="closed" value="true" />
+      <created>1738782237352</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1738782237352</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add otp field" />
+    <MESSAGE value="fix otp modal code" />
+    <MESSAGE value="set up user in the database" />
+    <MESSAGE value="create profile screen" />
+    <MESSAGE value="create a internal mutation and action to delete user from convex and from clerk" />
+    <MESSAGE value="create a home tab" />
+    <MESSAGE value="create a profile screen update and support contact screen" />
+    <MESSAGE value="solve issues related to contact support screen" />
+    <option name="LAST_COMMIT_MESSAGE" value="solve issues related to contact support screen" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/convex/users.ts</url>
+          <line>23</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/hooks/useUserProfile.tsx</url>
+          <line>4</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/app/(modals)/contactSupport.tsx</url>
+          <line>11</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
