@@ -74,16 +74,10 @@ const ContactSupport = () => {
 
     return (
         <SafeAreaView>
-            <VStack className="p-6" >
-                <HStack className=" items-center gap-12 ">
-                    <TouchableOpacity className="bg-background-dark rounded-2xl w-12 h-12 items-center justify-center p-2" onPress={() => router.back()}>
-                        <Icon  as={ChevronLeft } className="h-12 w-12 text-white"/>
-                    </TouchableOpacity>
-                    <Text className=" text-3xl font-OutfitBold "> Contact Support</Text>
-                </HStack>
+            <VStack className="px-6" >
 
                 <VStack>
-                    <VStack className="mt-6">
+                    <VStack className="">
                         <Text className="text-lg font-Outfit">Get in touch with our support staff to get answers to your burning questions!</Text>
                         <Text className="text-lg font-Outfit mt-4">By submitting a ticket, you agree to adhere to our Terms of Engagement.</Text>
                     </VStack>

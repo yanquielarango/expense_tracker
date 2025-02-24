@@ -1,47 +1,63 @@
 import { Tabs } from "expo-router"
-import { Home, Wallet,LayoutGrid ,ChartNoAxesCombined , User } from "lucide-react-native"
+import {View, Image, Text, TouchableOpacity} from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import {useUserProfile} from "@/hooks/useUserProfile";
+import {Avatar, AvatarFallbackText, AvatarImage} from "@/components/ui/avatar";
+import React from "react";
+import {TabBar} from "@/components/TabBar";
 
 export default function TabsLayout() {
+    const {userProfile} = useUserProfile()
     return (
-        <Tabs
+        <Tabs  tabBar={props => <TabBar {...props} />}
             screenOptions={{
                 headerShown: false,
-                tabBarStyle: {
-                    backgroundColor: "#fff",
-                    borderTopColor: "#262626",
-                    height: 60,
-                    paddingVertical: 5,
-
-
-                },
-                // tabBarActiveTintColor: "#0286ff",
-                // tabBarInactiveTintColor: "#a3a3a3",
-                tabBarActiveTintColor: "#0d579b",
-                tabBarInactiveTintColor: "#000",
                 tabBarLabelStyle: {
                     fontSize: 12,
                     fontWeight: "bold",
                     fontFamily: "Outfit-Medium",
+                },
 
-                },
-                tabBarIconStyle: {
-                    marginBottom: 2,
-                },
 
             }}
         >
             <Tabs.Screen
                 name="home"
                 options={{
-                    tabBarIcon: ({ color }) => <Home  size={24} color={color} />,
-                    tabBarLabel: "Home"
+                    tabBarLabel: "Home",
+                    headerShown: true,
+                    headerTitle: "",
+                    headerStyle: {
+                        shadowColor: "transparent",
+                    },
+                    headerLeft: () => (
+                        <View style={{ flexDirection: "row", alignItems: "center", marginHorizontal: 16, marginTop: 14 }}>
+                            <Avatar className="" size="lg">
+                                <AvatarFallbackText >{userProfile?.firstName}</AvatarFallbackText>
+                                <AvatarImage
+                                    source={{ uri: userProfile?.imageUrl }}
+                                />
+                            </Avatar>
+                           <View  style={{padding: 10}}>
+                               <Text style={{ fontSize: 14,  }}>Hello</Text>
+                               <Text style={{ fontSize: 20, fontWeight: "600" }}>{userProfile?.firstName}</Text>
+                           </View>
+                        </View>
+                    ),
 
+                    headerRight: () => (
+                        <TouchableOpacity
+                            onPress={() => console.log("Search icon pressed")}
+                            style={{ marginHorizontal: 16, marginTop: 14}}
+                        >
+                            <Ionicons name="search" size={32} color="#333" />
+                        </TouchableOpacity>
+                    ),
                 }}
             />
             <Tabs.Screen
                 name="expense"
                 options={{
-                    tabBarIcon: ({ color }) => <ChartNoAxesCombined  size={24} color={color} />,
                     tabBarLabel: "Stats"
 
                 }}
@@ -49,7 +65,6 @@ export default function TabsLayout() {
             <Tabs.Screen
                 name="history"
                 options={{
-                    tabBarIcon: ({ color }) => <Wallet size={24} color={color} />,
                     tabBarLabel: "Wallet"
                 }}
 
@@ -57,7 +72,6 @@ export default function TabsLayout() {
             <Tabs.Screen
                 name="profile"
                 options={{
-                    tabBarIcon: ({ color }) => <User size={24} color={color} />,
                     tabBarLabel: "Profile"
                 }}
             />

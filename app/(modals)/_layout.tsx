@@ -1,33 +1,54 @@
 import { Stack } from "expo-router"
+import { TouchableOpacity } from "react-native"
+import { useRouter } from "expo-router"
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 export default function ModalLayout() {
+    const router = useRouter()
+
     return (
         <Stack
             screenOptions={{
                 headerShown: false,
-                // contentStyle: { backgroundColor: "#171717" },
                 animation: "slide_from_right",
             }}
         >
             <Stack.Screen
                 name="profileModal"
                 options={{
-                    headerShown: false,
+                    headerShown: true,
                     presentation: "modal",
-                    animation: "slide_from_bottom",
+                    headerTitle: "Update Profile",
+                    headerTitleAlign: "center",
+                    headerShadowVisible: false
+                    ,
+                    headerLeft: () => (
+                        <TouchableOpacity
+                            onPress={() => router.back()}
+                        >
+                            <Ionicons name="chevron-back" size={32} color="black" />
+                        </TouchableOpacity>
+                    ),
                 }}
             />
             <Stack.Screen
                 name="contactSupport"
                 options={{
-                    headerShown: false,
+                    headerShown: true,
                     presentation: "modal",
-                    animation: "slide_from_bottom",
+                    headerTitle: "Contact Support",
+                    headerTitleAlign: "center",
+                    headerShadowVisible: false
+,
+                    headerLeft: () => (
+                        <TouchableOpacity
+                            onPress={() => router.back()}
+                        >
+                            <Ionicons name="chevron-back" size={32} color="black" />
+                        </TouchableOpacity>
+                    ),
                 }}
             />
-
-
         </Stack>
     )
 }
-

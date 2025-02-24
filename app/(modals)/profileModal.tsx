@@ -48,14 +48,8 @@ const ProfileModal = () => {
     return (
         <SafeAreaView >
             <VStack className="p-6">
-                <HStack className=" items-center gap-14 ">
-                    <TouchableOpacity className="bg-background-dark rounded-2xl w-12 h-12 items-center justify-center p-2" onPress={() => router.back()}>
-                        <Icon  as={ChevronLeft } className="h-12 w-12 text-white"/>
-                    </TouchableOpacity>
-                    <Text className=" text-3xl font-OutfitBold "> Update Profile</Text>
-                </HStack>
 
-                <VStack className="p-6">
+                <VStack>
                     <VStack className=" justify-center items-center ">
                         <Avatar size="3xl" >
                             <AvatarImage
@@ -72,8 +66,8 @@ const ProfileModal = () => {
                         </Avatar>
                     </VStack>
                 </VStack>
-                <VStack className=" ">
-                    <VStack className="">
+                <VStack >
+                    <VStack className="mt-10">
                         <Text className="font-Outfit text-xl mb-2">Name</Text>
                         <Input
                             variant="outline"

@@ -11,21 +11,21 @@ const HomeCard = () => {
             <VStack className='w-full h-[170px] px-6 py-4'>
                 <VStack >
                     <HStack className="justify-between items-center ">
-                        <Text className="font-OutfitSemibold">Total Balance</Text>
+                        <Text className="font-OutfitSemibold text-lg">Total Balance</Text>
                         <Icon as={Ellipsis} className="font-OutfitSemibold"/>
                     </HStack>
                     <Text className="text-3xl font-OutfitBold mt-2">$2345.65</Text>
                 </VStack>
 
 
-                    <VStack className="mt-10">
+                    <VStack className="mt-8">
                        <HStack className="justify-between items-center ">
                            <VStack>
                                <HStack className='justify-space-between items-center gap-2'>
-                                   <VStack className="bg-slate-50  rounded-full p-1">
+                                   <VStack className=" bg-[#CCCCCC] rounded-full p-1">
                                        <Icon  as={MoveDown} className="font-OutfitSemibold "/>
                                    </VStack>
-                                   <Text>Income</Text>
+                                   <Text className="text-lg mb-2">Income</Text>
                                </HStack>
                                <Text className='text-center font-OutfitBold text-xl text-green-600'>$2340</Text>
                            </VStack>
@@ -33,10 +33,10 @@ const HomeCard = () => {
 
                            <VStack>
                                <HStack className='justify-space-between items-center gap-2'>
-                                   <VStack className="bg-white rounded-full p-1">
+                                   <VStack className="bg-[#CCCCCC] rounded-full p-1">
                                        <Icon  as={MoveUp} className="font-OutfitSemibold "/>
                                    </VStack>
-                                   <Text >Expense</Text>
+                                   <Text className="text-lg mb-2" >Expense</Text>
                                </HStack>
                                <Text className='text-center text-red-600 font-OutfitBold text-xl'>$2140</Text>
                            </VStack>
