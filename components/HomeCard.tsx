@@ -7,8 +7,8 @@ import {Ellipsis, MoveDown, MoveUp} from "lucide-react-native";
 
 const HomeCard = () => {
     return (
-       <ImageBackground  source={require('../assets/images/card.png')} className='h-[200px] w-full' resizeMode="stretch" >
-            <VStack className='w-full h-[170px] px-6 py-4'>
+       <ImageBackground  source={require('../assets/images/card.png')} className='h-[200px] w-full mt-10' resizeMode="stretch"  >
+            <VStack className='w-full h-[200px] px-6 py-4'>
                 <VStack >
                     <HStack className="justify-between items-center ">
                         <Text className="font-OutfitSemibold text-lg">Total Balance</Text>

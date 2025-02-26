@@ -12,7 +12,7 @@ const Welcome = () =>  {
   return (
     <SafeAreaView className="bg-white flex-1 ">
       <VStack className="" >
-        <TouchableOpacity className='items-end p-5' onPress={() => router.replace('/(auth)/sign-in')}>
+        <TouchableOpacity className='items-end p-5' onPress={() => router.replace('/(public)/sign-in')}>
             <Text className="font-OutfitBold">Sign In</Text>
         </TouchableOpacity>
 

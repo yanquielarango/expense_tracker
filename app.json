@@ -1,5 +1,3 @@
-
-
 {
   "expo": {
     "name": "expense-tracker",
@@ -43,9 +41,8 @@
       "router": {
         "origin": false
       },
-
       "eas": {
-        "projectId": "6e579777-57c8-46f5-9101-14f9d830463e"
+        "projectId": "54c40054-940d-4ce2-b216-93b914bad1be"
       }
     }
   }

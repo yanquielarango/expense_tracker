@@ -21,6 +21,7 @@ const LogoutAlertDialog = ({openLogoutAlertDialog, setOpenLogoutAlertDialog, }: 
 
     const logout = () => {
         signOut()
+        console.log("logout", )
     }
     const handleClose = () => {
         setOpenLogoutAlertDialog(false);

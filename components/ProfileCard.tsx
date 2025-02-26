@@ -3,10 +3,6 @@ import React from 'react'
 import {HStack} from "@/components/ui/hstack";
 import {Avatar, AvatarFallbackText, AvatarImage} from "@/components/ui/avatar";
 import {VStack} from "@/components/ui/vstack";
-
-import {useUser} from "@clerk/clerk-expo";
-import {useQuery} from "convex/react";
-import {api} from "@/convex/_generated/api";
 import { useUserProfile } from '@/hooks/useUserProfile';
 
 
@@ -14,8 +10,7 @@ import { useUserProfile } from '@/hooks/useUserProfile';
  export const ProfileCard = () => {
     const {userProfile} = useUserProfile()
 
-console.log(userProfile)
-  
+
 
     return (
         <HStack className="justify-between items-center mt-5 ">
@@ -23,7 +18,7 @@ console.log(userProfile)
                 <Avatar className="bg-primary-500" size="lg">
                     <AvatarFallbackText >{userProfile?.firstName}</AvatarFallbackText>
                     <AvatarImage
-                        source={{ uri: userProfile?.imageUrl }}
+                        source={{ uri: userProfile?.imageUrl || undefined }}
                     />
                 </Avatar>
                 <VStack>

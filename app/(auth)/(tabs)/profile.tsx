@@ -20,13 +20,13 @@ const profile = () => {
 
 
     return (
-      <SafeAreaView className="flex-1 bg-white">
+      <SafeAreaView className="flex-1 ">
         <VStack className="px-5 mt-4 " >
             <Text className='font-OutfitBold text-3xl'>Profile</Text>
             <ProfileCard/>
             <Divider className="mt-12 mb-8" />
             <VStack space="4xl">
-                <Pressable onPress={() => router.push('/(modals)/profileModal')}>
+                <Pressable onPress={() => router.push('/(auth)/(modals)/edit-profile')}>
                     <HStack className="justify-between">
                             <HStack space="md">
                                 <Icon as={User}  className='w-7 h-7'/>
@@ -37,7 +37,7 @@ const profile = () => {
                 </Pressable>
 
 
-                <Pressable onPress={() => router.push('/(modals)/profileModal')}>
+                <Pressable onPress={() => router.push('/(public)/welcome')}>
                     <HStack className="justify-between items-center">
                         <HStack space="md">
                             <Icon as={Bell}  className='w-7 h-7'/>
@@ -48,7 +48,7 @@ const profile = () => {
                 </Pressable>
 
 
-               <Pressable onPress={() =>router.push('/(modals)/profileModal')}>
+               <Pressable onPress={() =>router.push('/(auth)/(modals)/contact')}>
                    <HStack className="justify-between">
                        <HStack space="md">
                            <Icon as={Lock}   className='w-7 h-7'/>
@@ -58,9 +58,7 @@ const profile = () => {
                    </HStack>
                </Pressable>
 
-
-
-                <Pressable onPress={() =>router.push('/(modals)/contactSupport')}>
+                <Pressable onPress={() =>router.push('/(auth)/(modals)/contact')}>
                     <HStack className="justify-between  ">
                         <HStack space="md" className="">
                             <Icon as={HeadsetIcon}   className='w-7 h-7'/>

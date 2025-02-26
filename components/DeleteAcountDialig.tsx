@@ -19,10 +19,6 @@ import { api } from "@/convex/_generated/api";
 import {Spinner} from "@/components/ui/spinner";
 
 
-
-
-
-
 const LogoutAlertDialog = ({openDeleteAlertDialog, setOpenDeleteAlertDialog, }: any) => {
     const deleteUser = useMutation(api.users.deleteUser)
 
@@ -51,11 +47,9 @@ const LogoutAlertDialog = ({openDeleteAlertDialog, setOpenDeleteAlertDialog, }: 
 
         try {
             await deleteUser({ clerkId: userId });
-            console.log("User deleted successfully");
             await signOut();
             handleClose();
         } catch (error) {
-            console.error("Error deleting user:", error);
             setError("Failed to delete user. Please try again.");
         } finally {
             setIsDeleting(false);

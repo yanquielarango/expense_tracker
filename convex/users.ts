@@ -38,26 +38,46 @@ async function userByExternalId(ctx: QueryCtx, clerkUserId: string) {
 
 export const getUserById = query({
     args: {
-      userId: v.id('users'),
+        userId: v.id('users'),
     },
     handler: async (ctx, args) => {
-      const user = await ctx.db.get(args.userId);
-          
-    },
-  });
+        const user = await ctx.db.get(args.userId);
+        if (!user?.imageUrl || user.imageUrl.startsWith('http')) {
+            return user;
+        }
 
-export const getUserByClerkId = query({
-    args: { clerkId: v.string() },
-    handler: async (ctx, args) => {
-        const user = await ctx.db
-            .query("users")
-            .withIndex("byClerkUserId", (q) => q.eq("clerkId", args.clerkId))
-            .unique();
-        console.log("User found in Convex:", user);
-        return user;
+        const url = await ctx.storage.getUrl(user.imageUrl );
+
+        return {
+            ...user,
+            imageUrl: url,
+        };
     },
 });
 
+
+export const getUserByClerkId = query({
+    args: {
+        clerkId: v.optional(v.string()),
+    },
+    handler: async (ctx, args) => {
+        const user = await ctx.db
+            .query('users')
+            .filter((q) => q.eq(q.field('clerkId'), args.clerkId))
+            .unique();
+
+        if (!user?.imageUrl || user.imageUrl.startsWith('http')) {
+            return user;
+        }
+
+        const url = await ctx.storage.getUrl(user.imageUrl );
+
+        return {
+            ...user,
+            imageUrl: url,
+        };
+    },
+});
 
 
 // Internal Mutation for create a user in the database
@@ -73,7 +93,6 @@ export const InternalCreateUser = internalMutation({
             email: args.email,
             clerkId: args.clerkId,
         });
-        console.log("User created in Convex:", userId);
         return userId;
 
     },
@@ -113,10 +132,8 @@ export const deleteUserFromClerk = action({
 
         try {
             await clerkClient.users.deleteUser(clerkId);
-            console.log("User deleted from Clerk successfully");
             return { success: true };
         } catch (error) {
-            console.error("Failed to delete user from Clerk:", error);
             return { success: false, error: "Failed to delete user from Clerk" };
         }
     },
@@ -160,14 +177,12 @@ export const deleteUser = mutation({
         })
 
         if (!convexResult.success) {
-            console.error(`Failed to delete user from Convex: ${args.clerkId}`)
             throw new Error(convexResult.error || "Failed to delete user from Convex")
         }
 
         return { success: true, message: "User deletion process initiated" }
     },
 })
-
 
 export const updateUserProfile = mutation({
     args: {
@@ -200,4 +215,11 @@ export const updateUserProfile = mutation({
 
         return { success: true, message: "Profile updated successfully" };
     },
+});
+
+
+export const generateUploadUrl = mutation(async (ctx) => {
+    await getCurrentUserOrThrow(ctx);
+
+    return await ctx.storage.generateUploadUrl();
 });

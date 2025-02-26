@@ -10,7 +10,6 @@ export default defineSchema({
     }).index('byClerkUserId', ['clerkId']),
 
 
-
-
-
 })
+
+

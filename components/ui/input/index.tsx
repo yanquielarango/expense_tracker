@@ -34,7 +34,7 @@ cssInterop(PrimitiveIcon, {
 });
 
 const inputStyle = tva({
-  base: '  border-typography-300  flex-row overflow-hidden content-center data-[hover=true]:border-outline-400 data-[focus=true]:border-background-300  data-[focus=true]:border-2  data-[focus=true]:hover:border-primary-700 data-[disabled=true]:opacity-40 data-[disabled=true]:hover:border-background-300 items-center',
+  base: '  border-typography-300  flex-row overflow-hidden content-center data-[hover=true]:border-outline-400 data-[focus=true]:border-[#673ab7]  data-[focus=true]:border-2  data-[focus=true]:hover:border-primary-700 data-[disabled=true]:opacity-40 data-[disabled=true]:hover:border-background-300 items-center',
 
   variants: {
     size: {
