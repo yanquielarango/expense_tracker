@@ -5,7 +5,7 @@ export default defineSchema({
     users: defineTable({
         email: v.string(),
         clerkId: v.string(),
-        imageUrl: v.optional(v.string()),
+        imageUrl: v.optional(v.id("_storage")),
         firstName: v.string()
     }).index('byClerkUserId', ['clerkId']),
 

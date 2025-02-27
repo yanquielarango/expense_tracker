@@ -46,7 +46,7 @@ export const getUserById = query({
             return user;
         }
 
-        const url = await ctx.storage.getUrl(user.imageUrl );
+        const url = await ctx.storage.getUrl(user.imageUrl as Id<'_storage'>);
 
         return {
             ...user,
@@ -70,7 +70,7 @@ export const getUserByClerkId = query({
             return user;
         }
 
-        const url = await ctx.storage.getUrl(user.imageUrl );
+        const url = await ctx.storage.getUrl(user.imageUrl as Id<'_storage'>);
 
         return {
             ...user,
@@ -187,7 +187,7 @@ export const deleteUser = mutation({
 export const updateUserProfile = mutation({
     args: {
         name: v.string(),
-        imageUrl: v.optional(v.string()),
+        imageUrl: v.optional(v.id("_storage")),
     },
     handler: async (ctx, args) => {
         const identity = await ctx.auth.getUserIdentity();
@@ -202,7 +202,7 @@ export const updateUserProfile = mutation({
 
         const updateFields: {
             firstName: string;
-            imageUrl?: string;
+            imageUrl?: Id<"_storage">;
         } = {
             firstName: args.name,
         };

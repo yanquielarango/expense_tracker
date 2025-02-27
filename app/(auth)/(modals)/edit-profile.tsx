@@ -25,6 +25,8 @@ const EditProfile = () => {
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter()
 
+
+
     const [form, setForm] = useState({
         name: userProfile?.firstName,
         imageStorageId: "",
@@ -85,7 +87,7 @@ const EditProfile = () => {
             // Update the profile using the storage ID directly
             await updateUserProfile({
                 name: form.name  || "",
-                imageUrl: imageUrl || ""
+                imageUrl: imageUrl as Id<"_storage">
             });
 
             router.back();
@@ -98,7 +100,7 @@ const EditProfile = () => {
     };
 
     return (
-        <SafeAreaView >
+        <SafeAreaView className="flex-1" >
             <HStack className='border-[#e0e0e0] border-b-[1px] mb-4 px-4 py-3 gap-2 items-center'>
                 <TouchableOpacity onPress={() => router.dismiss()} >
                     <Ionicons name="chevron-back" size={32} color="black" />
@@ -163,8 +165,8 @@ const EditProfile = () => {
             </VStack>
 
 
-            <VStack className=" bg-white px-4 py-3 border-t-[1px] border-[#e0e0e0]   mt-[305px]">
-                <TouchableOpacity className="bg-[#673ab7] p-4 rounded-xl" activeOpacity={0.8} onPress={handleUpdateUserProfile} >
+            <VStack className="bg-white border-t-[#e0e0e0] border-t-[1px] px-4 py-3  absolute bottom-0 right-0 left-0">
+                <TouchableOpacity className="bg-[#673ab7] p-4 rounded-xl" >
                     {isLoading ? (
                         <Spinner size="large" className="text-white" />
                     ) : (

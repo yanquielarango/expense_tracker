@@ -133,7 +133,7 @@ const Contact = () => {
             </ScrollView>
 
 
-            <VStack className="absolute  bottom-0 right-0 left-0 bg-white border-t-[#e0e0e0] border-[1px] px-4 py-3 ">
+            <VStack className="absolute  bottom-0 right-0 left-0 bg-white border-t-[#e0e0e0] border-t-[1px] px-4 py-3 ">
                 <TouchableOpacity className="bg-[#673ab7] p-4 rounded-xl" >
                     {isloading ? (
                         <Spinner size="large" className="text-white" />
